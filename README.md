@@ -4,7 +4,7 @@
 
 Kite is an installable web video editor for creators who want to cut, caption, polish, and export from any device without an app store detour. It runs as a PWA on iOS, Android, tablet, desktop browsers, and now has a macOS desktop shell for local installs.
 
-[Open Kite](https://kitevideo.vercel.app) · [Promo Kit](promo/launch-kit.md) · [Vertical Onboarding Pack](artifacts/kite-onboarding-vertical-pack/README.md)
+[Open Kite](https://kitevideo.iangoh.com) · [Promo Kit](promo/launch-kit.md) · [Vertical Onboarding Pack](artifacts/kite-onboarding-vertical-pack/README.md)
 
 ![Kite social preview](apps/web/public/brand/kite-og.png)
 
@@ -89,7 +89,7 @@ pnpm preview
 
 The production web app is currently deployed at:
 
-[https://kitevideo.vercel.app](https://kitevideo.vercel.app)
+[https://kitevideo.iangoh.com](https://kitevideo.iangoh.com)
 
 Build command:
 
@@ -110,9 +110,9 @@ The Kite AI assistant calls a server-side Vercel function at `api/ai/assist.ts`.
 Set these environment variables in Vercel:
 
 ```bash
-FREELLMAPI_BASE_URL=https://your-router.example.com/v1
-FREELLMAPI_API_KEY=your-server-side-key
-FREELLMAPI_MODEL=openai/gpt-oss-20b:free
+KITE_AI_BASE_URL=https://your-model-router.example.com/v1
+KITE_AI_API_KEY=your-server-side-key
+KITE_AI_MODEL=openai/gpt-oss-20b:free
 ```
 
 Only the Vercel function should see the API key.

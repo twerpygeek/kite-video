@@ -75,9 +75,9 @@ export default async function handler(request: Request): Promise<Response> {
     return jsonResponse({ error: normalized.error }, 400, corsHeaders);
   }
 
-  const baseUrl = getEnv("FREELLMAPI_BASE_URL").replace(/\/$/, "");
-  const apiKey = getEnv("FREELLMAPI_API_KEY");
-  const model = getEnv("FREELLMAPI_MODEL") || DEFAULT_MODEL;
+  const baseUrl = getEnv("KITE_AI_BASE_URL").replace(/\/$/, "");
+  const apiKey = getEnv("KITE_AI_API_KEY");
+  const model = getEnv("KITE_AI_MODEL") || DEFAULT_MODEL;
 
   if (!baseUrl || !apiKey) {
     return jsonResponse(

@@ -30,7 +30,7 @@ No app store. No download. Just edit.
 Kite is an installable web video editor for creators who want to cut, caption, polish, and export from phone, tablet, desktop, or Mac.
 
 Create once. Let it fly.
-https://kitevideo.vercel.app
+https://kitevideo.iangoh.com
 ```
 
 ### LinkedIn

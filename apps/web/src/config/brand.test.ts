@@ -5,7 +5,7 @@ describe("BRAND", () => {
   it("uses a distinct non-EditCut product name with PWA asset paths", () => {
     expect(BRAND.name).toBe("Kite");
     expect(BRAND.name).not.toMatch(/editcut|edits/i);
-    expect(BRAND.domain).toBe("https://kitevideo.vercel.app");
+    expect(BRAND.domain).toBe("https://kitevideo.iangoh.com");
     expect(BRAND.markSrc).toBe("/brand/kite-mark.svg");
     expect(BRAND.ogImage).toBe("/brand/kite-og.png");
     expect(BRAND.appleTouchIcon).toBe("/icons/apple-touch-icon.png");
