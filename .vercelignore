@@ -1,0 +1,24 @@
+.git
+.vercel
+node_modules
+apps/*/node_modules
+packages/*/node_modules
+
+# Local build output
+apps/web/dist
+apps/desktop
+packages/*/dist
+packages/*/build
+packages/core/src/wasm/**/build
+
+# Local release and promo artifacts not needed by the hosted web app
+artifacts
+*.png
+
+# Non-Kite brand exploration leftovers
+apps/web/public/brand/concepts
+apps/web/public/brand/editcut-*
+apps/web/public/brand/framekind-*
+apps/web/public/brand/joltcut-*
+apps/web/public/brand/montaio-*
+apps/web/public/brand/veyzo-*
