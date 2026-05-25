@@ -1,10 +1,42 @@
-<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="14" fill="#0B1020"/>
-  <path d="M32 7L52 27L32 47L12 27L32 7Z" fill="#4AA8FF"/>
-  <path d="M32 7L52 27L32 23L12 27L32 7Z" fill="#6C5CFF"/>
-  <path d="M32 23L52 27L32 47V23Z" fill="#42E0C0"/>
-  <path d="M32 23L12 27L32 47V23Z" fill="#F7FBFF"/>
-  <path d="M32 47C32 52 36 55 41 56" stroke="#FFD166" stroke-width="4" stroke-linecap="round"/>
-  <path d="M41 56C46 57 49 54 51 50" stroke="#F044A3" stroke-width="4" stroke-linecap="round"/>
-  <path d="M32 47C29 52 24 54 19 52" stroke="#6C5CFF" stroke-width="4" stroke-linecap="round"/>
+<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tileGlass" x1="12" y1="4" x2="116" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172B59"/>
+      <stop offset="0.46" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#060812"/>
+    </linearGradient>
+    <linearGradient id="tileRim" x1="18" y1="4" x2="112" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFF"/>
+      <stop offset="0.36" stop-color="#8CC9FF"/>
+      <stop offset="0.68" stop-color="#6C5CFF"/>
+      <stop offset="1" stop-color="#42E0C0"/>
+    </linearGradient>
+    <linearGradient id="kiteTop" x1="64" y1="18" x2="64" y2="59" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8E7CFF"/>
+      <stop offset="1" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="kiteLeft" x1="31" y1="52" x2="64" y2="92" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFF"/>
+      <stop offset="1" stop-color="#DDF0FF"/>
+    </linearGradient>
+    <linearGradient id="kiteRight" x1="64" y1="45" x2="99" y2="91" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58F1D2"/>
+      <stop offset="1" stop-color="#22B8A8"/>
+    </linearGradient>
+    <filter id="kiteShadow" x="18" y="12" width="92" height="107" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000000" flood-opacity="0.36"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#tileGlass)"/>
+  <rect class="premium-rim" x="2.5" y="2.5" width="123" height="123" rx="27.5" stroke="url(#tileRim)" stroke-width="5"/>
+  <g filter="url(#kiteShadow)">
+    <path d="M64 16L101 53L64 91L27 53L64 16Z" fill="#4AA8FF"/>
+    <path d="M64 16L101 53L64 45L27 53L64 16Z" fill="url(#kiteTop)"/>
+    <path d="M64 45L101 53L64 91V45Z" fill="url(#kiteRight)"/>
+    <path d="M64 45L27 53L64 91V45Z" fill="url(#kiteLeft)"/>
+    <path d="M27 53L64 45L101 53" stroke="#F7FBFF" stroke-opacity="0.72" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M64 90C65 101 72 108 84 110" stroke="#FFD166" stroke-width="8" stroke-linecap="round"/>
+    <path d="M84 110C94 111 100 106 104 99" stroke="#F044A3" stroke-width="8" stroke-linecap="round"/>
+    <path d="M64 90C58 100 48 104 37 101" stroke="#6C5CFF" stroke-width="8" stroke-linecap="round"/>
+  </g>
 </svg>

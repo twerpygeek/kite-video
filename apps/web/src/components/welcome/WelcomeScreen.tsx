@@ -5,6 +5,8 @@ import {
   CheckCircle2,
   Clock,
   Clapperboard,
+  Download,
+  GraduationCap,
   FolderOpen,
   Github,
   Layers,
@@ -697,11 +699,22 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ initialTab }) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#F7FBFF] text-[#0B1020] dark:bg-background dark:text-text-primary">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[linear-gradient(180deg,#F7FBFF_0%,#EEF6FF_44%,#FFFFFF_100%)] text-[#0B1020] dark:bg-background dark:bg-none dark:text-text-primary">
       <header className="sticky top-0 z-20 border-b border-[#0B1020]/10 bg-[#F7FBFF]/92 backdrop-blur-xl dark:border-white/10 dark:bg-background/92">
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
           <BrandLockup />
           <nav className="hidden items-center gap-2 md:flex">
+            <Button
+              variant="ghost"
+              size="sm"
+              asChild
+              className="text-[#0B1020] hover:bg-[#4AA8FF]/15 dark:text-text-primary"
+            >
+              <a href="#/tutorial">
+                <GraduationCap size={16} />
+                Tutorial
+              </a>
+            </Button>
             <Button
               variant="ghost"
               size="sm"
@@ -812,6 +825,16 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ initialTab }) => {
               >
                 <Play size={17} />
                 Watch tour
+              </Button>
+              <Button
+                variant="outline"
+                asChild
+                className="h-12 border-[#0B1020]/15 bg-white px-6 text-[#0B1020] hover:bg-[#EAF5FF] dark:border-white/10 dark:bg-background-secondary dark:text-text-primary dark:hover:bg-background-tertiary"
+              >
+                <a href={BRAND.macDownloadUrl} target="_blank" rel="noreferrer">
+                  <Download size={17} />
+                  Download Mac app
+                </a>
               </Button>
             </div>
 

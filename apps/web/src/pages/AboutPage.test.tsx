@@ -18,5 +18,11 @@ describe("AboutPage", () => {
     expect(
       screen.getByRole("link", { name: /start editing/i }),
     ).toHaveAttribute("href", "#/welcome");
+    expect(
+      screen.getByRole("link", { name: /download mac app/i }),
+    ).toHaveAttribute(
+      "href",
+      "https://github.com/twerpygeek/kite-video/releases/download/v0.1.0/Kite-0.1.0-arm64.dmg",
+    );
   });
 });

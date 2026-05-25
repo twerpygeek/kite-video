@@ -44,10 +44,12 @@ export function AboutPage() {
                 <ArrowRight size={17} />
               </a>
               <a
-                href="https://github.com/twerpygeek/kite-video/releases/tag/v0.1.0"
+                href={BRAND.macDownloadUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/18 px-6 py-3 text-sm font-bold text-white transition hover:border-[#ffd166] hover:text-[#ffd166]"
               >
-                Mac preview
+                Download Mac app
                 <Download size={17} />
               </a>
             </div>

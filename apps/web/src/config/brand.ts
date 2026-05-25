@@ -3,10 +3,12 @@ export const BRAND = {
   shortName: "Kite",
   domain: "https://kitevideo.iangoh.com",
   githubUrl: "https://github.com/twerpygeek/kite-video",
-  tagline: "Create once. Let it fly.",
+  macDownloadUrl:
+    "https://github.com/twerpygeek/kite-video/releases/download/v0.1.0/Kite-0.1.0-arm64.dmg",
+  tagline: "Create Once, Let it Fly",
   heroLine: "Turn one idea into platform-ready posts for every channel.",
   heroHeadline: "No app store. No download. Just edit.",
-  lockupLabel: "AI video workflow",
+  lockupLabel: "Create Once, Let it Fly",
   heroCopy:
     "Install Kite in about 5 seconds on iOS, Android, or desktop. Drop in one idea, use Kite AI to shape platform-ready cuts and captions, then keep control of every version.",
   description:

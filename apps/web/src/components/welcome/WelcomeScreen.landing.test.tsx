@@ -136,4 +136,24 @@ describe("WelcomeScreen landing experience", () => {
       "https://github.com/twerpygeek/kite-video",
     );
   });
+
+  it("links to the tutorial from the landing navigation", () => {
+    render(<WelcomeScreen />);
+
+    expect(screen.getByRole("link", { name: /Tutorial/i })).toHaveAttribute(
+      "href",
+      "#/tutorial",
+    );
+  });
+
+  it("offers the macOS app download from the hero actions", () => {
+    render(<WelcomeScreen />);
+
+    expect(
+      screen.getByRole("link", { name: /Download Mac app/i }),
+    ).toHaveAttribute(
+      "href",
+      "https://github.com/twerpygeek/kite-video/releases/download/v0.1.0/Kite-0.1.0-arm64.dmg",
+    );
+  });
 });

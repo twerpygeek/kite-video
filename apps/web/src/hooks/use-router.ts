@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 export type AppRoute =
   | "welcome"
   | "about"
+  | "tutorial"
   | "editor"
   | "new"
   | "templates"
@@ -41,6 +42,7 @@ function parseRoutePath(rawPath: string): RouterState {
   const validRoutes: AppRoute[] = [
     "welcome",
     "about",
+    "tutorial",
     "editor",
     "new",
     "templates",

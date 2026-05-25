@@ -14,5 +14,11 @@ describe("MobileInstallGuide", () => {
     expect(
       screen.getByRole("link", { name: /Continue in browser/i }),
     ).toHaveAttribute("href", "#/welcome");
+    expect(
+      screen.getByRole("link", { name: /Download Mac app/i }),
+    ).toHaveAttribute(
+      "href",
+      "https://github.com/twerpygeek/kite-video/releases/download/v0.1.0/Kite-0.1.0-arm64.dmg",
+    );
   });
 });

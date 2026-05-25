@@ -11,4 +11,13 @@ describe("useRouter clean paths", () => {
 
     expect(result.current.route).toBe("about");
   });
+
+  it("treats /tutorial as the tutorial route when no hash is present", () => {
+    window.history.pushState(null, "", "/tutorial");
+    window.location.hash = "";
+
+    const { result } = renderHook(() => useRouter());
+
+    expect(result.current.route).toBe("tutorial");
+  });
 });

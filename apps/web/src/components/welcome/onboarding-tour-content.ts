@@ -25,7 +25,7 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     icon: Scissors,
     accent: "#ff4e6b",
     imageSrc: "/brand/onboarding/tutorial-timeline.webp",
-    imageAlt: "Mobile video timeline with trim handles, waveforms, and a playhead.",
+    imageAlt: "Mobile editor timeline with trim handles, waveforms, and a playhead.",
   },
   {
     title: "Add captions",

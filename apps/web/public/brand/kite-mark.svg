@@ -1,12 +1,67 @@
 <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="128" height="128" rx="28" fill="#0B1020"/>
-  <path d="M64 13L103 52L64 91L25 52L64 13Z" fill="#4AA8FF"/>
-  <path d="M64 13L103 52L64 44L25 52L64 13Z" fill="#6C5CFF"/>
-  <path d="M64 44L103 52L64 91V44Z" fill="#42E0C0"/>
-  <path d="M64 44L25 52L64 91V44Z" fill="#F7FBFF"/>
-  <path d="M64 91C64 101 71 107 82 109" stroke="#FFD166" stroke-width="8" stroke-linecap="round"/>
-  <path d="M82 109C91 111 97 106 101 99" stroke="#F044A3" stroke-width="8" stroke-linecap="round"/>
-  <path d="M64 91C58 101 49 105 38 102" stroke="#6C5CFF" stroke-width="8" stroke-linecap="round"/>
-  <path d="M64 13L64 91" stroke="#0B1020" stroke-width="3" stroke-linecap="round" opacity=".42"/>
-  <path d="M25 52H103" stroke="#0B1020" stroke-width="3" stroke-linecap="round" opacity=".35"/>
+  <defs>
+    <linearGradient id="tileGlass" x1="12" y1="4" x2="116" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172B59"/>
+      <stop offset="0.46" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#060812"/>
+    </linearGradient>
+    <linearGradient id="tileRim" x1="18" y1="4" x2="112" y2="124" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFF"/>
+      <stop offset="0.36" stop-color="#8CC9FF"/>
+      <stop offset="0.68" stop-color="#6C5CFF"/>
+      <stop offset="1" stop-color="#42E0C0"/>
+    </linearGradient>
+    <radialGradient id="tileBloom" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(39 25) rotate(43) scale(95)">
+      <stop stop-color="#6C5CFF" stop-opacity="0.42"/>
+      <stop offset="0.42" stop-color="#4AA8FF" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#0B1020" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kiteTop" x1="64" y1="18" x2="64" y2="59" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8E7CFF"/>
+      <stop offset="1" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="kiteLeft" x1="31" y1="52" x2="64" y2="92" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFF"/>
+      <stop offset="1" stop-color="#DDF0FF"/>
+    </linearGradient>
+    <linearGradient id="kiteRight" x1="64" y1="45" x2="99" y2="91" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58F1D2"/>
+      <stop offset="1" stop-color="#22B8A8"/>
+    </linearGradient>
+    <linearGradient id="kiteFold" x1="31" y1="52" x2="99" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8CC9FF"/>
+      <stop offset="0.5" stop-color="#F7FBFF"/>
+      <stop offset="1" stop-color="#42E0C0"/>
+    </linearGradient>
+    <linearGradient id="tailGold" x1="65" y1="89" x2="85" y2="111" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE8A3"/>
+      <stop offset="1" stop-color="#FFD166"/>
+    </linearGradient>
+    <linearGradient id="tailPink" x1="83" y1="110" x2="105" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7AC2"/>
+      <stop offset="1" stop-color="#F044A3"/>
+    </linearGradient>
+    <linearGradient id="tailPurple" x1="65" y1="90" x2="35" y2="103" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8E7CFF"/>
+      <stop offset="1" stop-color="#6C5CFF"/>
+    </linearGradient>
+    <filter id="kiteShadow" x="18" y="12" width="92" height="107" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000000" flood-opacity="0.36"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#tileGlass)"/>
+  <rect width="128" height="128" rx="30" fill="url(#tileBloom)"/>
+  <rect class="premium-rim" x="2.5" y="2.5" width="123" height="123" rx="27.5" stroke="url(#tileRim)" stroke-width="5"/>
+  <path d="M18 19C33 10 51 8 70 13" stroke="#F7FBFF" stroke-opacity="0.22" stroke-width="2" stroke-linecap="round"/>
+  <g filter="url(#kiteShadow)">
+    <path d="M64 16L101 53L64 91L27 53L64 16Z" fill="#4AA8FF"/>
+    <path d="M64 16L101 53L64 45L27 53L64 16Z" fill="url(#kiteTop)"/>
+    <path d="M64 45L101 53L64 91V45Z" fill="url(#kiteRight)"/>
+    <path d="M64 45L27 53L64 91V45Z" fill="url(#kiteLeft)"/>
+    <path d="M27 53L64 45L101 53" stroke="url(#kiteFold)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M64 18V90" stroke="#0B1020" stroke-opacity="0.34" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M64 90C65 101 72 108 84 110" stroke="url(#tailGold)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M84 110C94 111 100 106 104 99" stroke="url(#tailPink)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M64 90C58 100 48 104 37 101" stroke="url(#tailPurple)" stroke-width="8" stroke-linecap="round"/>
+  </g>
 </svg>

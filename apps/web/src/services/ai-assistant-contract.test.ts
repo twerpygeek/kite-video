@@ -47,7 +47,7 @@ describe("ai assistant contract", () => {
     });
 
     expect(messages[0].content).toMatch(/Kite/i);
-    expect(messages[0].content).toMatch(/Create once\. Let it fly/i);
+    expect(messages[0].content).toMatch(/Create Once, Let it Fly/i);
     expect(messages[0].content).toMatch(/browser video editor/i);
     expect(messages[1].content).toMatch(/Instagram Reels/i);
     expect(messages[1].content).toMatch(/platform-ready/i);

@@ -7,6 +7,9 @@ describe("BRAND", () => {
     expect(BRAND.name).not.toMatch(/editcut|edits/i);
     expect(BRAND.domain).toBe("https://kitevideo.iangoh.com");
     expect(BRAND.githubUrl).toBe("https://github.com/twerpygeek/kite-video");
+    expect(BRAND.macDownloadUrl).toBe(
+      "https://github.com/twerpygeek/kite-video/releases/download/v0.1.0/Kite-0.1.0-arm64.dmg",
+    );
     expect(BRAND.markSrc).toBe("/brand/kite-mark.svg");
     expect(BRAND.ogImage).toBe("/brand/kite-og.png");
     expect(BRAND.appleTouchIcon).toBe("/icons/apple-touch-icon.png");
@@ -16,7 +19,8 @@ describe("BRAND", () => {
   });
 
   it("uses clearer creator-focused ad copy", () => {
-    expect(BRAND.tagline).toBe("Create once. Let it fly.");
+    expect(BRAND.tagline).toBe("Create Once, Let it Fly");
+    expect(BRAND.lockupLabel).toBe("Create Once, Let it Fly");
     expect(BRAND.heroLine).toBe(
       "Turn one idea into platform-ready posts for every channel.",
     );
