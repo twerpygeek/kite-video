@@ -7,10 +7,10 @@ export const BRAND = {
     "https://github.com/twerpygeek/kite-video/releases/download/v0.1.0/Kite-0.1.0-arm64.dmg",
   tagline: "Create Once, Let it Fly",
   heroLine: "Turn one idea into platform-ready posts for every channel.",
-  heroHeadline: "No app store. No download. Just edit.",
+  heroHeadline: "One editor. Every device.",
   lockupLabel: "Create Once, Let it Fly",
   heroCopy:
-    "Install Kite in about 5 seconds on iOS, Android, or desktop. Drop in one idea, use Kite AI to shape platform-ready cuts and captions, then keep control of every version.",
+    "Install Kite in about 5 seconds on iOS, Android, desktop, or Mac. Drop in one idea, use Kite AI to shape platform-ready cuts and captions, then keep control of every version.",
   description:
     "Kite is a PWA-first video editor for creators who want phone-to-desktop editing and platform-ready posts without app-store friction.",
   proofPoints: [

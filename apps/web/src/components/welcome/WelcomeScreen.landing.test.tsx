@@ -121,7 +121,7 @@ describe("WelcomeScreen landing experience", () => {
     const tour = screen.getByRole("region", {
       name: "First launch tour walkthrough",
     });
-    const copy = screen.getByText("No app store. No download. Just edit.");
+    const copy = screen.getByText("One editor. Every device.");
 
     expect(
       tour.compareDocumentPosition(copy) & Node.DOCUMENT_POSITION_FOLLOWING,

@@ -24,10 +24,10 @@ describe("BRAND", () => {
     expect(BRAND.heroLine).toBe(
       "Turn one idea into platform-ready posts for every channel.",
     );
-    expect(BRAND.heroHeadline).toBe("No app store. No download. Just edit.");
+    expect(BRAND.heroHeadline).toBe("One editor. Every device.");
     expect(BRAND.heroCopy).toMatch(/Install Kite in about 5 seconds/i);
     expect(BRAND.heroCopy).toMatch(/Kite AI/i);
-    expect(BRAND.heroCopy).toMatch(/iOS, Android, or desktop/i);
+    expect(BRAND.heroCopy).toMatch(/iOS, Android, desktop, or Mac/i);
     expect(BRAND.description).toMatch(/PWA-first video editor/i);
     expect(BRAND.description).toMatch(/without app-store friction/i);
     expect(BRAND.proofPoints).toEqual([

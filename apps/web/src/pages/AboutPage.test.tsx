@@ -11,7 +11,7 @@ describe("AboutPage", () => {
         name: /a web video editor you can install anywhere/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/No app store\. No download\. Just edit\./i)).toBeInTheDocument();
+    expect(screen.getByText(/One editor\. Every device\./i)).toBeInTheDocument();
     expect(
       screen.getByRole("img", { name: /mobile editor caption controls/i }),
     ).toBeInTheDocument();

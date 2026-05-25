@@ -30,9 +30,8 @@ export function AboutPage() {
               A web video editor you can install anywhere.
             </h1>
             <p className="mt-7 max-w-2xl text-xl leading-9 text-white/72">
-              No app store. No download. Just edit. Kite helps creators cut,
-              caption, polish, and export from phone, tablet, desktop browser,
-              or Mac.
+              One editor. Every device. Kite helps creators cut, caption,
+              polish, and export from phone, tablet, desktop browser, or Mac.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
