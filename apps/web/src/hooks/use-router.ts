@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 
 export type AppRoute =
   | "welcome"
+  | "about"
   | "editor"
   | "new"
   | "templates"
@@ -23,9 +24,9 @@ export interface RouterState {
   params: RouteParams;
 }
 
-function parseHash(hash: string): RouterState {
-  const cleanHash = hash.replace(/^#\/?/, "");
-  const [path, queryString] = cleanHash.split("?");
+function parseRoutePath(rawPath: string): RouterState {
+  const cleanPath = rawPath.replace(/^#?\/?/, "");
+  const [path, queryString] = cleanPath.split("?");
 
   const params: RouteParams = {};
   if (queryString) {
@@ -39,6 +40,7 @@ function parseHash(hash: string): RouterState {
   let route: AppRoute = (pathParts[0] || "welcome") as AppRoute;
   const validRoutes: AppRoute[] = [
     "welcome",
+    "about",
     "editor",
     "new",
     "templates",
@@ -54,6 +56,15 @@ function parseHash(hash: string): RouterState {
     route: validRoutes.includes(route) ? route : "welcome",
     params,
   };
+}
+
+function parseLocation(hash: string, pathname: string): RouterState {
+  const hasHashRoute = hash.replace(/^#\/?/, "").length > 0;
+  if (hasHashRoute) {
+    return parseRoutePath(hash);
+  }
+
+  return parseRoutePath(pathname);
 }
 
 function buildHash(route: AppRoute, params?: RouteParams): string {
@@ -78,18 +89,22 @@ function buildHash(route: AppRoute, params?: RouteParams): string {
 export function useRouter() {
   const [state, setState] = useState<RouterState>(() => {
     if (typeof window !== "undefined") {
-      return parseHash(window.location.hash);
+      return parseLocation(window.location.hash, window.location.pathname);
     }
     return { route: "welcome", params: {} };
   });
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setState(parseHash(window.location.hash));
+    const handleLocationChange = () => {
+      setState(parseLocation(window.location.hash, window.location.pathname));
     };
 
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    window.addEventListener("hashchange", handleLocationChange);
+    window.addEventListener("popstate", handleLocationChange);
+    return () => {
+      window.removeEventListener("hashchange", handleLocationChange);
+      window.removeEventListener("popstate", handleLocationChange);
+    };
   }, []);
 
   const navigate = useCallback((route: AppRoute, params?: RouteParams) => {

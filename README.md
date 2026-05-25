@@ -6,7 +6,7 @@ Kite is an installable web video editor for creators who want to cut, caption, p
 
 [Open Kite](https://kitevideo.iangoh.com) · [Promo Kit](promo/launch-kit.md) · [Vertical Onboarding Pack](artifacts/kite-onboarding-vertical-pack/README.md)
 
-![Kite social preview](apps/web/public/brand/kite-og.png)
+![Kite onboarding preview](artifacts/kite-onboarding-vertical-pack/preview-contact-sheet.png)
 
 ## The Pitch
 

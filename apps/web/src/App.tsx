@@ -5,6 +5,7 @@ import { SearchModal } from "./components/editor/SearchModal";
 import { MobileBlocker } from "./components/MobileBlocker";
 import { WelcomeScreen } from "./components/welcome";
 import { RecoveryDialog } from "./components/welcome/RecoveryDialog";
+import { AboutPage } from "./pages/AboutPage";
 import { SharePage } from "./pages/SharePage";
 import { useUIStore } from "./stores/ui-store";
 import { useProjectStore } from "./stores/project-store";
@@ -91,7 +92,7 @@ function App() {
       navigate("editor");
     } else if (route === "editor" && skipWelcomeScreen) {
       hasHandledInitialRoute.current = true;
-    } else if (["welcome", "templates", "recent"].includes(route)) {
+    } else if (["welcome", "about", "templates", "recent"].includes(route)) {
       hasHandledInitialRoute.current = true;
     }
   }, [
@@ -137,6 +138,8 @@ function App() {
         <MobileBlocker />
         {isSharePage ? (
           <SharePage shareId={params.shareId!} />
+        ) : route === "about" ? (
+          <AboutPage />
         ) : showWelcome ? (
           <WelcomeScreen initialTab={initialTab} />
         ) : (
