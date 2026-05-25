@@ -727,7 +727,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ initialTab }) => {
               className="text-[#0B1020] hover:bg-[#4AA8FF]/15 dark:text-text-primary"
             >
               <a
-                href="https://github.com/Augani/openreel-video"
+                href={BRAND.githubUrl}
                 target="_blank"
                 rel="noreferrer"
               >

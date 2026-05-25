@@ -6,6 +6,7 @@ describe("BRAND", () => {
     expect(BRAND.name).toBe("Kite");
     expect(BRAND.name).not.toMatch(/editcut|edits/i);
     expect(BRAND.domain).toBe("https://kitevideo.iangoh.com");
+    expect(BRAND.githubUrl).toBe("https://github.com/twerpygeek/kite-video");
     expect(BRAND.markSrc).toBe("/brand/kite-mark.svg");
     expect(BRAND.ogImage).toBe("/brand/kite-og.png");
     expect(BRAND.appleTouchIcon).toBe("/icons/apple-touch-icon.png");

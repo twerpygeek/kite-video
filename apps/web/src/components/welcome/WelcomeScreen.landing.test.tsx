@@ -127,4 +127,13 @@ describe("WelcomeScreen landing experience", () => {
       tour.compareDocumentPosition(copy) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
   });
+
+  it("links the GitHub button to the Kite repository", () => {
+    render(<WelcomeScreen />);
+
+    expect(screen.getByRole("link", { name: /GitHub/i })).toHaveAttribute(
+      "href",
+      "https://github.com/twerpygeek/kite-video",
+    );
+  });
 });
