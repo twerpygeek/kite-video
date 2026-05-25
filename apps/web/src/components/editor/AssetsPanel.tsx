@@ -354,7 +354,7 @@ const MediaThumbnail: React.FC<{
         )}
 
         {isSelected && (
-          <div className="w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_#22c55e] flex-shrink-0" />
+          <div className="w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_#4AA8FF] flex-shrink-0" />
         )}
       </div>
         </ContextMenuTrigger>
@@ -481,7 +481,7 @@ const MediaThumbnail: React.FC<{
 
         {/* Selection indicator */}
         {isSelected && (
-          <div className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_#22c55e]" />
+          <div className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_#4AA8FF]" />
         )}
       </div>
 

@@ -1,5 +1,5 @@
 /**
- * OpenReel Service Worker
+ * Kite Service Worker
  *
  * Handles offline functionality by caching application assets.
  * Implements a cache-first strategy for static assets and network-first for API calls.
@@ -10,15 +10,31 @@
  * - 35.4: Inform user that AI requires internet connectivity
  */
 
-const CACHE_NAME = "openreel-v1";
-const STATIC_CACHE_NAME = "openreel-static-v1";
-const DYNAMIC_CACHE_NAME = "openreel-dynamic-v1";
+const CACHE_NAME = "kite-v1";
+const STATIC_CACHE_NAME = "kite-static-v1";
+const DYNAMIC_CACHE_NAME = "kite-dynamic-v1";
 
 /**
  * Static assets to cache on install
  * These are the core application files needed for offline functionality
  */
-const STATIC_ASSETS = ["/", "/index.html", "/manifest.json"];
+const STATIC_ASSETS = [
+  "/",
+  "/index.html",
+  "/manifest.json",
+  "/favicon.svg",
+  "/brand/kite-mark.svg",
+  "/brand/kite-og.png",
+  "/brand/onboarding/tutorial-import.webp",
+  "/brand/onboarding/tutorial-timeline.webp",
+  "/brand/onboarding/tutorial-captions.webp",
+  "/brand/onboarding/tutorial-polish.webp",
+  "/brand/onboarding/tutorial-export.webp",
+  "/icons/icon-192.png",
+  "/icons/icon-512.png",
+  "/icons/maskable-icon-512.png",
+  "/icons/apple-touch-icon.png",
+];
 
 /**
  * Patterns for assets that should be cached dynamically
@@ -111,7 +127,10 @@ self.addEventListener("activate", (event) => {
             .filter((name) => {
               // Delete old versions of our caches
               return (
-                name.startsWith("openreel-") &&
+                (name.startsWith("openreel-") ||
+                  name.startsWith("montaio-") ||
+                  name.startsWith("veyzo-") ||
+                  name.startsWith("kite-")) &&
                 name !== STATIC_CACHE_NAME &&
                 name !== DYNAMIC_CACHE_NAME
               );
@@ -287,7 +306,12 @@ async function getCacheStatus() {
   let totalEntries = 0;
 
   for (const name of cacheNames) {
-    if (name.startsWith("openreel-")) {
+    if (
+      name.startsWith("openreel-") ||
+      name.startsWith("montaio-") ||
+      name.startsWith("veyzo-") ||
+      name.startsWith("kite-")
+    ) {
       const cache = await caches.open(name);
       const keys = await cache.keys();
       totalEntries += keys.length;
@@ -295,7 +319,13 @@ async function getCacheStatus() {
   }
 
   return {
-    cacheNames: cacheNames.filter((n) => n.startsWith("openreel-")),
+    cacheNames: cacheNames.filter(
+      (n) =>
+        n.startsWith("openreel-") ||
+        n.startsWith("montaio-") ||
+        n.startsWith("veyzo-") ||
+        n.startsWith("kite-")
+    ),
     totalEntries,
     version: CACHE_NAME,
   };
@@ -308,9 +338,15 @@ async function clearAllCaches() {
   const cacheNames = await caches.keys();
   await Promise.all(
     cacheNames
-      .filter((name) => name.startsWith("openreel-"))
+      .filter(
+        (name) =>
+          name.startsWith("openreel-") ||
+          name.startsWith("montaio-") ||
+          name.startsWith("veyzo-") ||
+          name.startsWith("kite-")
+      )
       .map((name) => caches.delete(name))
   );
 }
 
-console.log("[ServiceWorker] Script loaded");
+console.log("[ServiceWorker] Kite script loaded");

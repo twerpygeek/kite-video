@@ -6123,12 +6123,12 @@ export const Preview: React.FC = () => {
               }}
             >
               {selectedShapeClip.type !== "svg" && (
-                <div className="absolute inset-0 border-2 border-green-500 pointer-events-none" />
+                <div className="absolute inset-0 border-2 border-primary pointer-events-none" />
               )}
 
               {/* Move handle (center) */}
               <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-green-500/80 rounded-full flex items-center justify-center cursor-move pointer-events-auto hover:bg-green-500 transition-colors"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-primary/80 rounded-full flex items-center justify-center cursor-move pointer-events-auto hover:bg-primary transition-colors"
                 onMouseDown={handleShapeClipMouseDown}
                 title="Drag to move shape"
               >
@@ -6139,7 +6139,7 @@ export const Preview: React.FC = () => {
               <button
                 className={`absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-[10px] rounded pointer-events-auto transition-colors ${
                   lockAspectRatio
-                    ? "bg-green-500 text-white"
+                    ? "bg-primary text-primary-foreground"
                     : "bg-background-tertiary text-text-secondary border border-border hover:bg-background-elevated"
                 }`}
                 onClick={() => setLockAspectRatio(!lockAspectRatio)}
@@ -6152,37 +6152,37 @@ export const Preview: React.FC = () => {
 
               {/* Corner resize handles */}
               <div
-                className="absolute -left-2 -top-2 w-4 h-4 bg-white border-2 border-green-500 rounded-sm cursor-nw-resize pointer-events-auto hover:bg-green-500 hover:border-white transition-colors"
+                className="absolute -left-2 -top-2 w-4 h-4 bg-white border-2 border-primary rounded-sm cursor-nw-resize pointer-events-auto hover:bg-primary hover:border-white transition-colors"
                 onMouseDown={(e) => handleShapeHandleMouseDown(e, "nw")}
               />
               <div
-                className="absolute -right-2 -top-2 w-4 h-4 bg-white border-2 border-green-500 rounded-sm cursor-ne-resize pointer-events-auto hover:bg-green-500 hover:border-white transition-colors"
+                className="absolute -right-2 -top-2 w-4 h-4 bg-white border-2 border-primary rounded-sm cursor-ne-resize pointer-events-auto hover:bg-primary hover:border-white transition-colors"
                 onMouseDown={(e) => handleShapeHandleMouseDown(e, "ne")}
               />
               <div
-                className="absolute -left-2 -bottom-2 w-4 h-4 bg-white border-2 border-green-500 rounded-sm cursor-sw-resize pointer-events-auto hover:bg-green-500 hover:border-white transition-colors"
+                className="absolute -left-2 -bottom-2 w-4 h-4 bg-white border-2 border-primary rounded-sm cursor-sw-resize pointer-events-auto hover:bg-primary hover:border-white transition-colors"
                 onMouseDown={(e) => handleShapeHandleMouseDown(e, "sw")}
               />
               <div
-                className="absolute -right-2 -bottom-2 w-4 h-4 bg-white border-2 border-green-500 rounded-sm cursor-se-resize pointer-events-auto hover:bg-green-500 hover:border-white transition-colors"
+                className="absolute -right-2 -bottom-2 w-4 h-4 bg-white border-2 border-primary rounded-sm cursor-se-resize pointer-events-auto hover:bg-primary hover:border-white transition-colors"
                 onMouseDown={(e) => handleShapeHandleMouseDown(e, "se")}
               />
 
               {/* Edge resize handles */}
               <div
-                className="absolute left-1/2 -translate-x-1/2 -top-2 w-6 h-4 bg-white border-2 border-green-500 rounded-sm cursor-n-resize pointer-events-auto hover:bg-green-500 hover:border-white transition-colors"
+                className="absolute left-1/2 -translate-x-1/2 -top-2 w-6 h-4 bg-white border-2 border-primary rounded-sm cursor-n-resize pointer-events-auto hover:bg-primary hover:border-white transition-colors"
                 onMouseDown={(e) => handleShapeHandleMouseDown(e, "n")}
               />
               <div
-                className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-6 h-4 bg-white border-2 border-green-500 rounded-sm cursor-s-resize pointer-events-auto hover:bg-green-500 hover:border-white transition-colors"
+                className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-6 h-4 bg-white border-2 border-primary rounded-sm cursor-s-resize pointer-events-auto hover:bg-primary hover:border-white transition-colors"
                 onMouseDown={(e) => handleShapeHandleMouseDown(e, "s")}
               />
               <div
-                className="absolute top-1/2 -translate-y-1/2 -left-2 w-4 h-6 bg-white border-2 border-green-500 rounded-sm cursor-w-resize pointer-events-auto hover:bg-green-500 hover:border-white transition-colors"
+                className="absolute top-1/2 -translate-y-1/2 -left-2 w-4 h-6 bg-white border-2 border-primary rounded-sm cursor-w-resize pointer-events-auto hover:bg-primary hover:border-white transition-colors"
                 onMouseDown={(e) => handleShapeHandleMouseDown(e, "w")}
               />
               <div
-                className="absolute top-1/2 -translate-y-1/2 -right-2 w-4 h-6 bg-white border-2 border-green-500 rounded-sm cursor-e-resize pointer-events-auto hover:bg-green-500 hover:border-white transition-colors"
+                className="absolute top-1/2 -translate-y-1/2 -right-2 w-4 h-6 bg-white border-2 border-primary rounded-sm cursor-e-resize pointer-events-auto hover:bg-primary hover:border-white transition-colors"
                 onMouseDown={(e) => handleShapeHandleMouseDown(e, "e")}
               />
             </div>
@@ -6253,7 +6253,7 @@ export const Preview: React.FC = () => {
           onClick={handleScrubClick}
         >
           <div
-            className="h-full bg-primary relative pointer-events-none shadow-[0_0_10px_rgba(34,197,94,0.5)]"
+            className="h-full bg-primary relative pointer-events-none shadow-[0_0_10px_rgba(37,217,239,0.5)]"
             style={{ width: `${progressPercentage}%` }}
           >
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity transform scale-0 group-hover:scale-100 duration-100 border border-black/20" />
@@ -6271,7 +6271,7 @@ export const Preview: React.FC = () => {
             <span
               className={`text-[10px] px-1.5 py-0.5 rounded ${
                 rendererType === "webgpu"
-                  ? "bg-green-500/20 text-green-400"
+                  ? "bg-primary/20 text-primary"
                   : "bg-gray-500/20 text-gray-400"
               }`}
               title={`Rendering with ${rendererType.toUpperCase()}`}
@@ -6296,7 +6296,7 @@ export const Preview: React.FC = () => {
             className={`w-10 h-10 rounded-full flex items-center justify-center text-white transition-all ${
               playbackLockedReason
                 ? "bg-background-tertiary text-text-muted cursor-not-allowed shadow-none"
-                : "bg-primary hover:bg-primary-hover active:bg-primary-active shadow-[0_0_15px_rgba(34,197,94,0.4)] hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transform hover:scale-105"
+                : "bg-primary hover:bg-primary-hover active:bg-primary-active shadow-[0_0_15px_rgba(37,217,239,0.4)] hover:shadow-[0_0_25px_rgba(37,217,239,0.6)] transform hover:scale-105"
             }`}
           >
             {isPlaying ? (

@@ -27,9 +27,9 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          hover: "#16a34a",
-          active: "#15803d",
-          glow: "rgba(34, 197, 94, 0.5)",
+          hover: "#2F91F2",
+          active: "#1F78D8",
+          glow: "rgba(74, 168, 255, 0.45)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -60,19 +60,20 @@ export default {
           muted: "rgb(var(--color-text-muted) / <alpha-value>)",
         },
         status: {
-          success: "#22c55e",
-          warning: "#eab308",
+          success: "#42E0C0",
+          warning: "#FFD166",
           error: "#ef4444",
-          info: "#3b82f6",
+          info: "#4AA8FF",
         }
       },
       fontFamily: {
-        sans: ['Geist', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+        sans: ['Manrope', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'Manrope', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
         mono: ['Geist Mono', 'monospace'],
       },
       boxShadow: {
-        'glow': '0 0 10px rgba(34, 197, 94, 0.3)',
-        'glow-lg': '0 0 20px rgba(34, 197, 94, 0.4)',
+        'glow': '0 0 10px rgba(74, 168, 255, 0.3)',
+        'glow-lg': '0 0 20px rgba(108, 92, 255, 0.32)',
         'panel': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15)',
       },
       borderRadius: {

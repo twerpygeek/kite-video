@@ -165,9 +165,9 @@ export const SaveTemplateDialog: React.FC<SaveTemplateDialogProps> = ({
 
         <div className="p-4 space-y-4 max-h-[70vh] overflow-y-auto">
           {success && (
-            <div className="flex items-center gap-2 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
-              <Check size={16} className="text-green-400" />
-              <span className="text-sm text-green-400">
+            <div className="flex items-center gap-2 p-3 bg-primary/10 border border-primary/30 rounded-lg">
+              <Check size={16} className="text-primary" />
+              <span className="text-sm text-primary">
                 Template saved successfully!
               </span>
             </div>

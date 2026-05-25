@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import { FolderOpen, SlidersHorizontal, Sparkles } from "lucide-react";
 
 import { Toolbar } from "./Toolbar";
 import { AssetsPanel } from "./AssetsPanel";
 import { Preview } from "./Preview";
 import { InspectorPanel } from "./InspectorPanel";
 import { Timeline } from "./Timeline";
+import { AIGenTab } from "./AIGenTab";
 import { KeyframeEditorPanel } from "./KeyframeEditorPanel";
 import { AudioMixer } from "../audio-mixer";
 import { KeyboardShortcutsOverlay } from "./KeyboardShortcutsOverlay";
@@ -47,12 +49,55 @@ const MAX_INSPECTOR_WIDTH = 520;
 const MIN_PREVIEW_WIDTH = 420;
 const SIDE_RESIZE_HANDLE_WIDTH = 6;
 const HORIZONTAL_RESIZE_HANDLE_HEIGHT = 4;
+const MOBILE_EDITOR_QUERY = "(max-width: 767px)";
 
 type ResizeTarget = "timeline" | "assets" | "inspector";
+type MobilePanel = "media" | "edit" | "ai";
 
 const clamp = (value: number, min: number, max: number): number => {
   return Math.min(Math.max(value, min), max);
 };
+
+const useIsMobileEditor = () => {
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return false;
+    return window.matchMedia(MOBILE_EDITOR_QUERY).matches;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+
+    const mediaQuery = window.matchMedia(MOBILE_EDITOR_QUERY);
+    const update = () => setIsMobile(mediaQuery.matches);
+
+    update();
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", update);
+    } else {
+      mediaQuery.addListener?.(update);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", update);
+      } else {
+        mediaQuery.removeListener?.(update);
+      }
+    };
+  }, []);
+
+  return isMobile;
+};
+
+const MOBILE_PANELS: Array<{
+  id: MobilePanel;
+  label: string;
+  icon: React.ElementType;
+}> = [
+  { id: "media", label: "Media", icon: FolderOpen },
+  { id: "edit", label: "Edit", icon: SlidersHorizontal },
+  { id: "ai", label: "AI", icon: Sparkles },
+];
 
 /**
  * Auto-save initialization hook
@@ -180,6 +225,7 @@ const useEngineInitialization = () => {
 export const EditorInterface: React.FC = () => {
   const { initialized, initializing, initError, initStatus } =
     useEngineInitialization();
+  const isMobileEditor = useIsMobileEditor();
 
   const { showShortcutsOverlay, setShowShortcutsOverlay } =
     useKeyboardShortcuts();
@@ -277,6 +323,7 @@ export const EditorInterface: React.FC = () => {
   const [timelineHeight, setTimelineHeight] = useState(DEFAULT_TIMELINE_HEIGHT);
   const [assetsWidth, setAssetsWidth] = useState(DEFAULT_ASSETS_WIDTH);
   const [inspectorWidth, setInspectorWidth] = useState(DEFAULT_INSPECTOR_WIDTH);
+  const [mobilePanel, setMobilePanel] = useState<MobilePanel>("media");
 
   const timelineHeightRef = useRef(DEFAULT_TIMELINE_HEIGHT);
   const assetsWidthRef = useRef(DEFAULT_ASSETS_WIDTH);
@@ -482,6 +529,96 @@ export const EditorInterface: React.FC = () => {
             <p className="text-red-500 text-xs mt-2">{initError}</p>
           )}
         </div>
+      </div>
+    );
+  }
+
+  const renderMobilePanel = () => {
+    switch (mobilePanel) {
+      case "edit":
+        return (
+          <PanelErrorBoundary name="Inspector">
+            <InspectorPanel />
+          </PanelErrorBoundary>
+        );
+      case "ai":
+        return (
+          <PanelErrorBoundary name="AI Tools">
+            <AIGenTab />
+          </PanelErrorBoundary>
+        );
+      case "media":
+      default:
+        return (
+          <PanelErrorBoundary name="Assets Panel">
+            <AssetsPanel />
+          </PanelErrorBoundary>
+        );
+    }
+  };
+
+  if (isMobileEditor) {
+    return (
+      <div className="relative z-20 flex h-full w-full select-none flex-col overflow-hidden bg-background font-sans text-xs text-text-secondary">
+        <Toolbar />
+
+        <section
+          role="region"
+          aria-label="Mobile editor workspace"
+          className="flex min-h-0 flex-1 flex-col overflow-hidden"
+        >
+          <div className="min-h-0 flex-[1.1] overflow-hidden border-b border-border bg-background">
+            <PanelErrorBoundary name="Preview">
+              <Preview />
+            </PanelErrorBoundary>
+          </div>
+
+          <div className="h-[188px] shrink-0 overflow-hidden border-b border-border bg-background-secondary">
+            <PanelErrorBoundary name="Timeline">
+              <Timeline />
+            </PanelErrorBoundary>
+          </div>
+
+          <div className="min-h-0 flex-1 overflow-hidden bg-background-secondary">
+            {renderMobilePanel()}
+          </div>
+
+          <div
+            role="tablist"
+            aria-label="Mobile editor panels"
+            className="grid shrink-0 grid-cols-3 gap-2 border-t border-border bg-background/95 px-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur"
+          >
+            {MOBILE_PANELS.map(({ id, label, icon: Icon }) => {
+              const active = mobilePanel === id;
+
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setMobilePanel(id)}
+                  className={`flex min-h-11 items-center justify-center gap-2 rounded-xl border px-3 text-[11px] font-semibold transition-colors ${
+                    active
+                      ? "border-primary/50 bg-primary/15 text-primary"
+                      : "border-border bg-background-secondary text-text-secondary active:bg-background-elevated"
+                  }`}
+                >
+                  <Icon size={15} />
+                  <span>{label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
+        <KeyboardShortcutsOverlay
+          isOpen={showShortcutsOverlay}
+          onClose={() => setShowShortcutsOverlay(false)}
+        />
+
+        <SpotlightTour />
+        <MoGraphTour />
       </div>
     );
   }

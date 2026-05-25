@@ -122,8 +122,7 @@ function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
-  const showWelcome =
-    ["welcome", "templates", "recent"].includes(route) && !skipWelcomeScreen;
+  const showWelcome = ["welcome", "templates", "recent"].includes(route);
   const initialTab =
     route === "templates"
       ? "templates"

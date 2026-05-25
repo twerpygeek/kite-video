@@ -1,0 +1,70 @@
+{
+  "name": "@kite/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "productName": "Kite",
+  "description": "Kite desktop video editor for macOS",
+  "main": "dist/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "pnpm build && electron .",
+    "dist": "pnpm build && node scripts/build-mac.mjs --mac zip && node scripts/create-dmg.mjs",
+    "dist:dir": "pnpm build && node scripts/build-mac.mjs --mac dir",
+    "test:run": "node --test test/*.test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "build": {
+    "appId": "com.iangoh.kite.desktop",
+    "productName": "Kite",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "assets/**/*",
+      {
+        "from": "../web/dist",
+        "to": "web",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.video",
+      "icon": "assets/icon.icns",
+      "target": [
+        "zip"
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "backgroundColor": "#0B1020",
+      "iconSize": 112,
+      "contents": [
+        {
+          "x": 142,
+          "y": 225,
+          "type": "file"
+        },
+        {
+          "x": 410,
+          "y": 225,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.4.5"
+  }
+}

@@ -1,16 +1,21 @@
 {
-  "name": "openreel",
+  "name": "kite-video",
   "version": "0.1.0",
   "private": true,
-  "description": "Professional video, audio, and photo editing in your browser",
+  "description": "Kite is an installable web video editor for creators: cut, caption, polish, and export from any device.",
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter @openreel/web dev",
     "build:wasm": "pnpm --filter @openreel/core build:wasm",
     "build": "pnpm build:wasm && pnpm --filter @openreel/web build",
+    "desktop:build": "pnpm build && pnpm --filter @kite/desktop build",
+    "desktop:dev": "pnpm build && pnpm --filter @kite/desktop dev",
+    "desktop:dist": "pnpm build && pnpm --filter @kite/desktop dist",
+    "desktop:dist:dir": "pnpm build && pnpm --filter @kite/desktop dist:dir",
     "preview": "pnpm --filter @openreel/web preview",
     "deploy": "pnpm build && pnpm --filter @openreel/web deploy",
     "deploy:preview": "pnpm build && pnpm --filter @openreel/web deploy:preview",
+    "deploy:vercel": "pnpm build && vercel deploy --prod --yes",
     "test": "pnpm -r test:run",
     "test:watch": "pnpm -r test",
     "lint": "pnpm -r lint",
@@ -22,6 +27,10 @@
   },
   "keywords": [
     "video-editor",
+    "kite",
+    "pwa",
+    "mobile-video-editor",
+    "ai-video-editor",
     "audio-editor",
     "browser-based",
     "webcodecs",
@@ -34,16 +43,16 @@
     "color-grading",
     "export"
   ],
-  "author": "Augustus Otu and Contributors",
+  "author": "Kite Contributors",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Augani/openreel-video.git"
+    "url": "https://github.com/Augani/kite-video.git"
   },
   "bugs": {
-    "url": "https://github.com/Augani/openreel-video/issues"
+    "url": "https://github.com/Augani/kite-video/issues"
   },
-  "homepage": "https://openreel.video",
+  "homepage": "https://kitevideo.vercel.app",
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"

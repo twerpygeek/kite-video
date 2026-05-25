@@ -1069,7 +1069,7 @@ export const InspectorPanel: React.FC = () => {
                             {effect.type.replace(/-/g, " ")}
                           </p>
                         </div>
-                        <span className={`text-[9px] font-medium ${effect.enabled !== false ? "text-green-400" : "text-text-muted"}`}>
+                        <span className={`text-[9px] font-medium ${effect.enabled !== false ? "text-primary" : "text-text-muted"}`}>
                           {effect.enabled !== false ? "On" : "Off"}
                         </span>
                       </div>
@@ -1164,7 +1164,7 @@ export const InspectorPanel: React.FC = () => {
                             transcriptionProgress.phase === "error"
                               ? "bg-red-500"
                               : transcriptionProgress.phase === "complete"
-                                ? "bg-green-500"
+                                ? "bg-primary"
                                 : "bg-primary"
                           }`}
                           style={{ width: `${transcriptionProgress.progress}%` }}
@@ -1748,7 +1748,7 @@ export const InspectorPanel: React.FC = () => {
                       disabled={isEnhancingAudio || isApplyingSelectedClipEffect}
                       className={`w-full py-2 border rounded-lg text-[10px] transition-all flex items-center justify-center gap-1.5 ${
                         audioEnhanced
-                          ? "bg-green-500/20 border-green-500 text-green-400"
+                          ? "bg-primary/20 border-primary text-primary"
                           : isEnhancingAudio || isApplyingSelectedClipEffect
                             ? "bg-background-tertiary border-border text-text-muted cursor-not-allowed"
                             : "bg-background-tertiary hover:bg-primary hover:text-white border-border hover:border-primary"

@@ -754,7 +754,7 @@ export const Timeline: React.FC = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent side="top" align="start" sideOffset={8} className="w-48">
               <DropdownMenuItem onClick={() => addTrack("video")}>
-                <Film size={16} className="text-green-400" />
+                <Film size={16} className="text-primary" />
                 <span>Video Track</span>
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => addTrack("audio")}>

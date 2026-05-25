@@ -171,7 +171,32 @@ export const ShapeClipComponent: React.FC<ShapeClipComponentProps> = ({
           : "Sticker"
         : "SVG";
   const IconComponent = isShape ? Shapes : isSticker ? Smile : FileCode;
-  const colorClass = isShape ? "green" : isSticker ? "pink" : "purple";
+  const clipTone = isShape
+    ? {
+        selected: "ring-2 ring-primary border-primary z-10",
+        idle: "border-primary/30 hover:border-primary/60 hover:brightness-110",
+        background: "bg-primary/20",
+        trimHover: "hover:bg-primary/40",
+        icon: "text-primary",
+        text: "text-primary/80",
+      }
+    : isSticker
+      ? {
+          selected: "ring-2 ring-pink-400 border-pink-400 z-10",
+          idle: "border-pink-500/30 hover:border-pink-500/60 hover:brightness-110",
+          background: "bg-pink-500/20",
+          trimHover: "hover:bg-pink-400/50",
+          icon: "text-pink-400",
+          text: "text-pink-200",
+        }
+      : {
+          selected: "ring-2 ring-purple-400 border-purple-400 z-10",
+          idle: "border-purple-500/30 hover:border-purple-500/60 hover:brightness-110",
+          background: "bg-purple-500/20",
+          trimHover: "hover:bg-purple-400/50",
+          icon: "text-purple-400",
+          text: "text-purple-200",
+        };
 
   const isInteracting = isDragging || isTrimming;
   const clipType = isShape ? "shape" : isSticker ? (shapeClip.type === "emoji" ? "emoji" : "sticker") : "svg";
@@ -185,11 +210,7 @@ export const ShapeClipComponent: React.FC<ShapeClipComponentProps> = ({
           onMouseDown={handleMouseDown}
           className={`absolute top-1 bottom-1 rounded-lg overflow-hidden cursor-grab group ${
             isDragging ? "cursor-grabbing opacity-75" : ""
-          } ${
-            isSelected
-              ? `ring-2 ring-${colorClass}-400 border-${colorClass}-400 z-10`
-              : `border-${colorClass}-500/30 hover:border-${colorClass}-500/60 hover:brightness-110`
-          } bg-${colorClass}-500/20 border`}
+          } ${isSelected ? clipTone.selected : clipTone.idle} ${clipTone.background} border`}
           style={{
             transform: `translateX(${left}px)`,
             width: `${Math.max(width, 40)}px`,
@@ -199,35 +220,35 @@ export const ShapeClipComponent: React.FC<ShapeClipComponentProps> = ({
         >
           <div
             className={`absolute left-0 top-0 bottom-0 w-2 cursor-ew-resize z-20 flex items-center justify-center transition-opacity ${
-              isSelected ? "opacity-100 bg-green-400" : `opacity-0 group-hover:opacity-100 hover:bg-${colorClass}-400/50`
+              isSelected ? "opacity-100 bg-primary" : `opacity-0 group-hover:opacity-100 ${clipTone.trimHover}`
             }`}
             style={{ borderRadius: "6px 0 0 6px" }}
             onMouseDown={(e) => handleTrimStart(e, "left")}
           >
-            {isSelected && <div className="w-0.5 h-3 bg-green-900/60 rounded-full" />}
+            {isSelected && <div className="w-0.5 h-3 bg-primary-foreground/80 rounded-full" />}
           </div>
           <div
             className={`absolute right-0 top-0 bottom-0 w-2 cursor-ew-resize z-20 flex items-center justify-center transition-opacity ${
-              isSelected ? "opacity-100 bg-green-400" : `opacity-0 group-hover:opacity-100 hover:bg-${colorClass}-400/50`
+              isSelected ? "opacity-100 bg-primary" : `opacity-0 group-hover:opacity-100 ${clipTone.trimHover}`
             }`}
             style={{ borderRadius: "0 6px 6px 0" }}
             onMouseDown={(e) => handleTrimStart(e, "right")}
           >
-            {isSelected && <div className="w-0.5 h-3 bg-green-900/60 rounded-full" />}
+            {isSelected && <div className="w-0.5 h-3 bg-primary-foreground/80 rounded-full" />}
           </div>
           <div className="w-full h-full flex items-center gap-1 px-3">
             <IconComponent
               size={12}
-              className={`text-${colorClass}-400 flex-shrink-0`}
+              className={`${clipTone.icon} flex-shrink-0`}
             />
             <span
-              className={`text-[10px] font-medium text-${colorClass}-200 truncate`}
+              className={`text-[10px] font-medium ${clipTone.text} truncate`}
             >
               {shapeLabel}
             </span>
           </div>
           {isSelected && (
-            <div className="absolute inset-0 border-2 border-green-400 rounded-lg pointer-events-none" />
+            <div className="absolute inset-0 border-2 border-primary rounded-lg pointer-events-none" />
           )}
         </div>
       </ContextMenuTrigger>

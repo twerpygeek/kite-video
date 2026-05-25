@@ -44,6 +44,7 @@ import { SettingsDialog } from "./settings/SettingsDialog";
 import { toast } from "../../stores/notification-store";
 import { useSettingsStore } from "../../stores/settings-store";
 import { useAnalytics, AnalyticsEvents } from "../../hooks/useAnalytics";
+import { BRAND } from "../../config/brand";
 import { startTour, ONBOARDING_KEY, startMoGraphTour, MOGRAPH_TOUR_KEY } from "./tour";
 import {
   DropdownMenu,
@@ -593,8 +594,8 @@ export const Toolbar: React.FC = () => {
   ];
 
   return (
-    <div className="h-16 border-b border-border flex items-center px-6 justify-between bg-background shrink-0 z-30 relative">
-      <div className="flex items-center gap-4">
+    <div className="relative z-30 flex shrink-0 border-b border-border bg-background md:h-16 md:items-center md:justify-between md:px-6 max-md:min-h-[112px] max-md:flex-col max-md:items-stretch max-md:gap-2 max-md:px-3 max-md:py-2">
+      <div className="flex items-center gap-4 max-md:w-full max-md:justify-between">
         <Tooltip>
           <TooltipTrigger asChild>
             <button
@@ -602,88 +603,26 @@ export const Toolbar: React.FC = () => {
               className="flex items-center gap-3 hover:opacity-80 transition-opacity"
               title="Back to Home"
             >
-              <div className="w-8 h-8 group">
-                <svg
-                  viewBox="0 0 490 490"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-full h-full text-primary group-hover:scale-110 transition-transform duration-300"
-                >
-                  <path
-                    d="M245 24.5C123.223 24.5 24.5 123.223 24.5 245s98.723 220.5 220.5 220.5 220.5-98.723 220.5-220.5S366.777 24.5 245 24.5Z"
-                    stroke="currentColor"
-                    strokeWidth="30.625"
-                    className="opacity-100"
-                  />
-                  <g className="origin-center group-hover:rotate-90 transition-transform duration-500 ease-out">
-                    <path
-                      d="M245 98v73.5"
-                      stroke="currentColor"
-                      strokeWidth="24.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M392 245h-73.5"
-                      stroke="currentColor"
-                      strokeWidth="24.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M245 392v-73.5"
-                      stroke="currentColor"
-                      strokeWidth="24.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M98 245h73.5"
-                      stroke="currentColor"
-                      strokeWidth="24.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="m348.941 141.059-51.965 51.965"
-                      stroke="currentColor"
-                      strokeWidth="24.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="m348.941 348.941-51.965-51.965"
-                      stroke="currentColor"
-                      strokeWidth="24.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="m141.059 348.941 51.965-51.965"
-                      stroke="currentColor"
-                      strokeWidth="24.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="m141.059 141.059 51.965 51.965"
-                      stroke="currentColor"
-                      strokeWidth="24.5"
-                      strokeLinecap="round"
-                    />
-                  </g>
-                  <path
-                    d="M294 245a49 49 0 0 1-49 49 49 49 0 0 1-49-49 49 49 0 0 1 98 0"
-                    fill="currentColor"
-                    className="group-hover:fill-white transition-colors duration-300"
-                  />
-                </svg>
+              <div className="h-8 w-8 overflow-hidden rounded-lg border border-border bg-background-secondary">
+                <img
+                  src={BRAND.markSrc}
+                  alt=""
+                  className="h-full w-full object-cover"
+                  draggable={false}
+                />
               </div>
-              <span className="text-lg font-medium text-text-primary tracking-wide hidden lg:block">
-                Open Reel
+              <span className="hidden text-lg font-medium text-text-primary lg:block">
+                {BRAND.name}
               </span>
             </button>
           </TooltipTrigger>
           <TooltipContent>Back to Home</TooltipContent>
         </Tooltip>
-        <div className="h-6 w-px bg-border hidden md:block" />
+        <div className="hidden h-6 w-px bg-border md:block" />
         <ProjectSwitcher />
       </div>
 
-      <div className="flex-1 max-w-2xl mx-12 relative group">
+      <div className="relative mx-12 hidden max-w-2xl flex-1 md:block group">
         <div
           className={`absolute inset-0 bg-primary/20 rounded-xl blur-md transition-opacity duration-300 ${
             hasSelectedClip
@@ -725,11 +664,11 @@ export const Toolbar: React.FC = () => {
         </button>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 max-md:w-full max-md:gap-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
-              className="p-2 rounded-lg hover:bg-background-elevated text-text-secondary hover:text-text-primary transition-colors"
+              className="hidden rounded-lg p-2 text-text-secondary transition-colors hover:bg-background-elevated hover:text-text-primary md:flex"
             >
               <HelpCircle size={16} />
             </button>
@@ -755,7 +694,7 @@ export const Toolbar: React.FC = () => {
           <TooltipTrigger asChild>
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-background-elevated text-text-secondary hover:text-text-primary transition-colors"
+              className="hidden rounded-lg p-2 text-text-secondary transition-colors hover:bg-background-elevated hover:text-text-primary md:flex"
             >
               {themeMode === "light" ? (
                 <Sun size={16} />
@@ -775,7 +714,7 @@ export const Toolbar: React.FC = () => {
           <TooltipTrigger asChild>
             <button
               onClick={() => openSettings()}
-              className="p-2 rounded-lg hover:bg-background-elevated text-text-secondary hover:text-text-primary transition-colors"
+              className="hidden rounded-lg p-2 text-text-secondary transition-colors hover:bg-background-elevated hover:text-text-primary md:flex"
             >
               <Settings size={16} />
             </button>
@@ -789,7 +728,7 @@ export const Toolbar: React.FC = () => {
           <TooltipTrigger asChild>
             <button
               onClick={() => useUIStore.getState().openModal("scriptView")}
-              className="p-2 rounded-lg hover:bg-background-elevated text-text-secondary hover:text-text-primary transition-colors"
+              className="hidden rounded-lg p-2 text-text-secondary transition-colors hover:bg-background-elevated hover:text-text-primary md:flex"
             >
               <FileCode size={16} />
             </button>
@@ -803,7 +742,7 @@ export const Toolbar: React.FC = () => {
           <TooltipTrigger asChild>
             <button
               onClick={toggleKeyframeEditor}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`hidden rounded-lg p-2 transition-colors md:flex ${
                 keyframeEditorOpen
                   ? "bg-primary/20 text-primary"
                   : "hover:bg-background-elevated text-text-secondary hover:text-text-primary"
@@ -821,7 +760,7 @@ export const Toolbar: React.FC = () => {
           <TooltipTrigger asChild>
             <button
               onClick={() => togglePanel("audioMixer")}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`hidden rounded-lg p-2 transition-colors md:flex ${
                 panels.audioMixer?.visible
                   ? "bg-primary/20 text-primary"
                   : "hover:bg-background-elevated text-text-secondary hover:text-text-primary"
@@ -839,7 +778,7 @@ export const Toolbar: React.FC = () => {
           <TooltipTrigger asChild>
             <button
               onClick={() => setIsHistoryOpen(!isHistoryOpen)}
-              className={`p-2 rounded-lg transition-colors ${
+              className={`hidden rounded-lg p-2 transition-colors md:flex ${
                 isHistoryOpen
                   ? "bg-primary/20 text-primary"
                   : "hover:bg-background-elevated text-text-secondary hover:text-text-primary"
@@ -857,7 +796,7 @@ export const Toolbar: React.FC = () => {
           <TooltipTrigger asChild>
             <button
               onClick={() => setIsRecorderOpen(true)}
-              className="flex items-center gap-2 px-3 py-2 bg-error/10 hover:bg-error/20 text-error rounded-lg transition-colors"
+              className="hidden items-center gap-2 rounded-lg bg-error/10 px-3 py-2 text-error transition-colors hover:bg-error/20 md:flex"
             >
               <Circle size={14} className="fill-current" />
               <span className="text-sm font-medium">Record</span>
@@ -868,9 +807,9 @@ export const Toolbar: React.FC = () => {
           </TooltipContent>
         </Tooltip>
 
-        <div className="relative">
+        <div className="relative max-md:flex-1 md:flex-none">
           {exportState.isExporting ? (
-            <div className="h-10 px-4 bg-background-secondary border border-border rounded-lg flex items-center gap-3 min-w-[200px]">
+            <div className="flex h-10 min-w-[200px] items-center gap-3 rounded-lg border border-border bg-background-secondary px-4 max-md:w-full max-md:min-w-0">
               <Loader2 size={14} className="text-primary animate-spin" />
               <div className="flex-1">
                 <div className="text-[10px] text-text-secondary">
@@ -891,7 +830,7 @@ export const Toolbar: React.FC = () => {
               </button>
             </div>
           ) : exportState.error ? (
-            <div className="h-10 px-4 bg-error/10 border border-error/30 rounded-lg flex items-center gap-2">
+            <div className="flex h-10 items-center gap-2 rounded-lg border border-error/30 bg-error/10 px-4 max-md:w-full">
               <span className="text-xs text-error">{exportState.error}</span>
               <button
                 onClick={() =>
@@ -903,7 +842,7 @@ export const Toolbar: React.FC = () => {
               </button>
             </div>
           ) : exportState.complete ? (
-            <div className="h-10 px-4 bg-primary/10 border border-primary/30 rounded-lg flex items-center gap-2">
+            <div className="flex h-10 items-center gap-2 rounded-lg border border-primary/30 bg-primary/10 px-4 max-md:w-full">
               <Check size={14} className="text-primary" />
               <span className="text-xs text-primary">Downloaded!</span>
             </div>
@@ -911,7 +850,8 @@ export const Toolbar: React.FC = () => {
             <DropdownMenu open={isExportOpen} onOpenChange={setIsExportOpen}>
               <DropdownMenuTrigger asChild>
                 <button
-                  className={`h-10 px-4 bg-primary hover:bg-primary-hover active:bg-primary-active text-white font-bold rounded-lg flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transform hover:-translate-y-0.5 ${
+                  aria-label="Export video"
+                  className={`flex h-10 items-center gap-2 rounded-lg bg-primary px-4 font-bold text-white shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] active:bg-primary-active max-md:h-12 max-md:w-full max-md:justify-center ${
                     isExportOpen ? "translate-y-0 shadow-none" : ""
                   }`}
                 >

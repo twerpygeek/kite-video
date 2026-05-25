@@ -2,7 +2,7 @@
  * API proxy utility for third-party service calls.
  *
  * In development: calls third-party APIs directly (for convenience).
- * In production: routes through Cloudflare Pages Functions proxy so
+ * In production: routes through the same-origin deployment proxy so
  * API keys never leave the same origin.
  */
 
@@ -62,7 +62,7 @@ export async function apiFetch(
     });
   }
 
-  // Production: route through same-origin proxy
+  // Production: route through same-origin proxy.
   const url = `/api/proxy/${service}${path}`;
   return fetch(url, {
     ...options,

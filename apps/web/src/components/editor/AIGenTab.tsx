@@ -6,6 +6,7 @@ import {
   Music,
   Video,
   Layers,
+  Bot,
   ChevronRight,
   Wand2,
   FileStack,
@@ -18,10 +19,11 @@ import { FilterPresetsPanel } from "./inspector/FilterPresetsPanel";
 import { MusicLibraryPanel } from "./inspector/MusicLibraryPanel";
 import { TemplatesBrowserPanel } from "./inspector/TemplatesBrowserPanel";
 import { MultiCameraPanel } from "./inspector/MultiCameraPanel";
+import { CreatorAssistantPanel } from "./CreatorAssistantPanel";
 import { useTtsAudioStore } from "../../stores/tts-store";
 import { toast } from "../../stores/notification-store";
 
-type FeatureId = "templates" | "captions" | "tts" | "filters" | "music" | "multicam" | null;
+type FeatureId = "assistant" | "templates" | "captions" | "tts" | "filters" | "music" | "multicam" | null;
 
 interface FeatureCardProps {
   icon: React.ElementType;
@@ -113,6 +115,8 @@ export const AIGenTab: React.FC = () => {
 
   const renderActivePanel = () => {
     switch (activeFeature) {
+      case "assistant":
+        return <CreatorAssistantPanel />;
       case "templates":
         return <TemplatesBrowserPanel />;
       case "captions":
@@ -160,6 +164,18 @@ export const AIGenTab: React.FC = () => {
 
         <FeatureSection title="Content Generation" icon={Wand2}>
           <FeatureCard
+            icon={Bot}
+            title="Creator Assistant"
+            description="Hooks, captions, titles, and edit notes"
+            iconColor="text-cyan-400"
+            iconBg="bg-cyan-500/20"
+            activeBorder="border-cyan-500/50"
+            activeBg="bg-cyan-500/10"
+            activeRing="ring-cyan-500/30"
+            isActive={activeFeature === "assistant"}
+            onClick={() => handleFeatureClick("assistant")}
+          />
+          <FeatureCard
             icon={Mic}
             title="Text to Speech"
             description="Generate natural voiceovers from text"
@@ -190,11 +206,11 @@ export const AIGenTab: React.FC = () => {
             icon={Layers}
             title="Project Templates"
             description="Start with pre-built project structures"
-            iconColor="text-green-400"
-            iconBg="bg-green-500/20"
-            activeBorder="border-green-500/50"
-            activeBg="bg-green-500/10"
-            activeRing="ring-green-500/30"
+            iconColor="text-primary"
+            iconBg="bg-primary/20"
+            activeBorder="border-primary/50"
+            activeBg="bg-primary/10"
+            activeRing="ring-primary/30"
             isActive={activeFeature === "templates"}
             onClick={() => handleFeatureClick("templates")}
           />

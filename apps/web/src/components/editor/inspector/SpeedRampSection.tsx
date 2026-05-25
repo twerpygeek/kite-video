@@ -107,7 +107,7 @@ const SpeedCurveCanvas: React.FC<{
     ctx.stroke();
     ctx.setLineDash([]);
 
-    ctx.strokeStyle = "#22c55e";
+    ctx.strokeStyle = "#4AA8FF";
     ctx.lineWidth = 2;
     ctx.beginPath();
 
@@ -161,10 +161,10 @@ const SpeedCurveCanvas: React.FC<{
       ctx.beginPath();
       ctx.arc(x, y, isDragging ? 8 : isHovered ? 7 : 6, 0, Math.PI * 2);
       ctx.fillStyle = isDragging
-        ? "#16a34a"
+        ? "#14a9bd"
         : isHovered
-          ? "#4ade80"
-          : "#22c55e";
+          ? "#67e8f9"
+          : "#4AA8FF";
       ctx.fill();
       ctx.strokeStyle = "#fff";
       ctx.lineWidth = 2;

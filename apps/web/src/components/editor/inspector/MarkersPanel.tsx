@@ -127,7 +127,7 @@ export const MarkersPanel: React.FC = () => {
                     <div className="flex gap-1">
                       <button
                         onClick={handleSaveEdit}
-                        className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-green-500 hover:bg-green-600 text-white rounded text-xs transition-colors"
+                        className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-primary hover:bg-primary-hover text-primary-foreground rounded text-xs transition-colors"
                       >
                         <Check size={12} />
                         Save

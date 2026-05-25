@@ -8,6 +8,7 @@ build/
 .next/
 out/
 *.tsbuildinfo
+apps/desktop/release/
 
 # Environment variables
 .env
@@ -53,6 +54,7 @@ apps/android
 
 
 # Local files
+/*.png
 FEATURES_TWITTER.md
 .claude-tasks.md
 CLAUDE.md
@@ -63,3 +65,4 @@ CLAUDE.md
 
 
 mobile-mockup/
+.vercel
