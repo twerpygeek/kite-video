@@ -1,7 +1,7 @@
 {
   "name": "Kite",
   "short_name": "Kite",
-  "description": "Create Once, Let it Fly. Install Kite to turn one idea into platform-ready posts from iOS, Android, or desktop browsers.",
+  "description": "One editor. Every device. Install Kite to turn one idea into platform-ready posts from iOS, Android, desktop, or Mac.",
   "start_url": "/#/welcome",
   "scope": "/",
   "display": "standalone",

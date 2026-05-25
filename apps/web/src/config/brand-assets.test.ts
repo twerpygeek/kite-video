@@ -13,4 +13,17 @@ describe("Kite brand assets", () => {
     expect(mark).toContain("kiteTop");
     expect(mark).toContain("premium-rim");
   });
+
+  it("keeps social and install metadata aligned with the current device promise", () => {
+    const index = readFileSync(resolve(process.cwd(), "index.html"), "utf8");
+    const manifest = JSON.parse(
+      readFileSync(resolve(process.cwd(), "public/manifest.json"), "utf8"),
+    ) as { description: string };
+
+    expect(index).toContain('content="Kite - One editor. Every device."');
+    expect(index).toContain("<title>Kite - One editor. Every device.</title>");
+    expect(index).not.toContain("No app store. No download. Just edit.");
+    expect(manifest.description).toContain("One editor. Every device.");
+    expect(manifest.description).toContain("Mac");
+  });
 });
