@@ -147,3 +147,195 @@ textarea:focus {
 button {
   cursor: pointer;
 }
+
+.kite-cursor-guide {
+  --kite-guide-tilt-x: 0deg;
+  --kite-guide-tilt-y: 0deg;
+  --kite-guide-eye-x: 0px;
+  --kite-guide-eye-y: 0px;
+  --kite-guide-tail-x: 0px;
+  width: min(210px, 100%);
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  perspective: 720px;
+}
+
+.kite-cursor-guide__bubble {
+  position: relative;
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(11, 16, 32, 0.1);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 0.58rem 0.8rem;
+  color: #0B1020;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  box-shadow: 0 18px 42px rgba(11, 16, 32, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.dark .kite-cursor-guide__bubble {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(17, 24, 44, 0.78);
+  color: #F7FBFF;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.kite-cursor-guide__stage {
+  position: relative;
+  display: grid;
+  width: 128px;
+  height: 126px;
+  place-items: center;
+}
+
+.kite-cursor-guide__shadow {
+  position: absolute;
+  bottom: 4px;
+  width: 92px;
+  height: 18px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(74, 168, 255, 0.42), transparent 68%);
+  filter: blur(8px);
+}
+
+.kite-cursor-guide__body {
+  position: relative;
+  width: 108px;
+  height: 112px;
+  transform: rotateX(var(--kite-guide-tilt-y)) rotateY(var(--kite-guide-tilt-x));
+  transform-style: preserve-3d;
+  transition: transform 150ms ease-out;
+  animation: kite-guide-float 4.2s ease-in-out infinite;
+}
+
+.kite-cursor-guide:hover .kite-cursor-guide__body {
+  transform: rotateX(var(--kite-guide-tilt-y)) rotateY(var(--kite-guide-tilt-x))
+    translateY(-4px) scale(1.04);
+}
+
+.kite-cursor-guide__kite {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 92px;
+  height: 92px;
+  transform: translateX(-50%) rotate(45deg) translateZ(18px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: 1.1rem;
+  background: #0B1020;
+  box-shadow:
+    0 24px 70px rgba(108, 92, 255, 0.28),
+    0 12px 44px rgba(74, 168, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.kite-cursor-guide__kite::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 34%),
+    linear-gradient(315deg, rgba(0, 0, 0, 0.18), transparent 46%);
+  pointer-events: none;
+}
+
+.kite-cursor-guide__panel {
+  position: absolute;
+  inset: 0;
+}
+
+.kite-cursor-guide__panel--top {
+  clip-path: polygon(50% 0, 100% 50%, 50% 50%, 0 50%);
+  background: linear-gradient(160deg, #7E6BFF 8%, #5D4EFF 82%);
+}
+
+.kite-cursor-guide__panel--left {
+  clip-path: polygon(0 50%, 50% 50%, 50% 100%);
+  background: linear-gradient(145deg, #FFFFFF 0%, #DDEBFF 100%);
+}
+
+.kite-cursor-guide__panel--right {
+  clip-path: polygon(100% 50%, 50% 50%, 50% 100%);
+  background: linear-gradient(145deg, #42E0C0 0%, #27BFA5 100%);
+}
+
+.kite-cursor-guide__face {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  z-index: 2;
+  width: 38px;
+  height: 18px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.kite-cursor-guide__eye {
+  position: absolute;
+  top: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #0B1020;
+  box-shadow: 0 0 12px rgba(74, 168, 255, 0.7);
+  transform: translate(var(--kite-guide-eye-x), var(--kite-guide-eye-y));
+}
+
+.kite-cursor-guide__eye--left {
+  left: 8px;
+}
+
+.kite-cursor-guide__eye--right {
+  right: 8px;
+}
+
+.kite-cursor-guide__tail {
+  position: absolute;
+  left: 50%;
+  top: 76px;
+  width: 56px;
+  height: 38px;
+  border-bottom: 8px solid #FFD166;
+  border-right: 8px solid #F044A3;
+  border-radius: 0 0 999px 0;
+  transform: translateX(calc(-50% + var(--kite-guide-tail-x)));
+  transition: transform 150ms ease-out;
+}
+
+.kite-cursor-guide__tail-dot {
+  position: absolute;
+  right: -9px;
+  bottom: -10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #F044A3;
+  box-shadow: 0 0 18px rgba(240, 68, 163, 0.58);
+}
+
+@keyframes kite-guide-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kite-cursor-guide__body {
+    animation: none;
+    transition: none;
+  }
+}

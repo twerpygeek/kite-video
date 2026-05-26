@@ -67,6 +67,10 @@ describe("WelcomeScreen landing experience", () => {
     render(<WelcomeScreen />);
 
     expect(
+      screen.getByRole("button", { name: /Cycle Kite guide tip/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Drop a clip.")).toBeInTheDocument();
+    expect(
       screen.getByRole("region", { name: "Kite content flight path" }),
     ).toBeInTheDocument();
     expect(
