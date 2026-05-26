@@ -763,6 +763,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ initialTab }) => {
           </div>
         </div>
       </header>
+      <KiteCursorGuide className="kite-cursor-guide--floating" />
 
       <main className="relative z-10">
         <section className="mx-auto flex min-h-[calc(100svh-120px)] max-w-7xl flex-col items-center gap-10 px-5 py-8 lg:px-8 lg:py-10">
@@ -779,8 +780,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ initialTab }) => {
             className="w-full max-w-5xl"
           >
             <div className="mx-auto max-w-3xl text-left sm:text-center">
-              <KiteCursorGuide className="mx-auto mb-7" />
-
               <div className="mb-6 inline-flex items-center gap-2 rounded-md border border-[#0B1020]/10 bg-white px-3 py-1.5 text-sm font-medium text-[#0B1020] dark:border-white/10 dark:bg-background-secondary dark:text-text-primary">
                 <Clapperboard size={16} />
                 {BRAND.tagline}

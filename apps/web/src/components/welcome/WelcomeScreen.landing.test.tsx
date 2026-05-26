@@ -68,7 +68,7 @@ describe("WelcomeScreen landing experience", () => {
 
     expect(
       screen.getByRole("button", { name: /Cycle Kite guide tip/i }),
-    ).toBeInTheDocument();
+    ).toHaveClass("kite-cursor-guide--floating");
     expect(screen.getByText("Drop a clip.")).toBeInTheDocument();
     expect(
       screen.getByRole("region", { name: "Kite content flight path" }),

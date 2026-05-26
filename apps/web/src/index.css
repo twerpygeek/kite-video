@@ -165,6 +165,13 @@ button {
   perspective: 720px;
 }
 
+.kite-cursor-guide--floating {
+  position: fixed;
+  right: clamp(1rem, 3.2vw, 3rem);
+  bottom: clamp(1rem, 4vh, 2rem);
+  z-index: 35;
+}
+
 .kite-cursor-guide__bubble {
   position: relative;
   min-height: 2.5rem;
@@ -337,5 +344,28 @@ button {
   .kite-cursor-guide__body {
     animation: none;
     transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .kite-cursor-guide--floating {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: 132px;
+    gap: 0.45rem;
+  }
+
+  .kite-cursor-guide--floating .kite-cursor-guide__bubble {
+    min-height: 2.2rem;
+    max-width: 124px;
+    padding: 0.48rem 0.62rem;
+    font-size: 0.68rem;
+  }
+
+  .kite-cursor-guide--floating .kite-cursor-guide__stage {
+    width: 92px;
+    height: 88px;
+    transform: scale(0.72);
+    transform-origin: top center;
   }
 }
