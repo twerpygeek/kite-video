@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { X } from "lucide-react";
 
 const GUIDE_MESSAGES = [
   "Drop a clip.",
@@ -21,6 +22,7 @@ export const KiteCursorGuide: React.FC<KiteCursorGuideProps> = ({
   const guideRef = useRef<HTMLButtonElement | null>(null);
   const frameRef = useRef<number | null>(null);
   const [messageIndex, setMessageIndex] = useState(0);
+  const [isHidden, setIsHidden] = useState(false);
   const message = GUIDE_MESSAGES[messageIndex];
 
   useEffect(() => {
@@ -66,34 +68,49 @@ export const KiteCursorGuide: React.FC<KiteCursorGuideProps> = ({
     };
   }, []);
 
+  if (isHidden) return null;
+
   return (
-    <button
-      ref={guideRef}
-      type="button"
-      className={`kite-cursor-guide ${className}`}
-      aria-label="Cycle Kite guide tip"
-      onClick={() =>
-        setMessageIndex((current) => (current + 1) % GUIDE_MESSAGES.length)
-      }
+    <div
+      className={`kite-cursor-guide-shell ${className}`}
+      data-testid="kite-guide-shell"
     >
-      <span className="kite-cursor-guide__bubble">{message}</span>
-      <span className="kite-cursor-guide__stage" aria-hidden="true">
-        <span className="kite-cursor-guide__shadow" />
-        <span className="kite-cursor-guide__body">
-          <span className="kite-cursor-guide__kite">
-            <span className="kite-cursor-guide__panel kite-cursor-guide__panel--top" />
-            <span className="kite-cursor-guide__panel kite-cursor-guide__panel--left" />
-            <span className="kite-cursor-guide__panel kite-cursor-guide__panel--right" />
-            <span className="kite-cursor-guide__face">
-              <span className="kite-cursor-guide__eye kite-cursor-guide__eye--left" />
-              <span className="kite-cursor-guide__eye kite-cursor-guide__eye--right" />
+      <button
+        type="button"
+        className="kite-cursor-guide__close"
+        aria-label="Hide Kite guide"
+        onClick={() => setIsHidden(true)}
+      >
+        <X size={14} strokeWidth={2.6} />
+      </button>
+      <button
+        ref={guideRef}
+        type="button"
+        className="kite-cursor-guide"
+        aria-label="Cycle Kite guide tip"
+        onClick={() =>
+          setMessageIndex((current) => (current + 1) % GUIDE_MESSAGES.length)
+        }
+      >
+        <span className="kite-cursor-guide__bubble">{message}</span>
+        <span className="kite-cursor-guide__stage" aria-hidden="true">
+          <span className="kite-cursor-guide__shadow" />
+          <span className="kite-cursor-guide__body">
+            <span className="kite-cursor-guide__kite">
+              <span className="kite-cursor-guide__panel kite-cursor-guide__panel--top" />
+              <span className="kite-cursor-guide__panel kite-cursor-guide__panel--left" />
+              <span className="kite-cursor-guide__panel kite-cursor-guide__panel--right" />
+              <span className="kite-cursor-guide__face">
+                <span className="kite-cursor-guide__eye kite-cursor-guide__eye--left" />
+                <span className="kite-cursor-guide__eye kite-cursor-guide__eye--right" />
+              </span>
+            </span>
+            <span className="kite-cursor-guide__tail">
+              <span className="kite-cursor-guide__tail-dot" />
             </span>
           </span>
-          <span className="kite-cursor-guide__tail">
-            <span className="kite-cursor-guide__tail-dot" />
-          </span>
         </span>
-      </span>
-    </button>
+      </button>
+    </div>
   );
 };

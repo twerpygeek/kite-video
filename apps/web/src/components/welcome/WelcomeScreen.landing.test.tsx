@@ -66,9 +66,12 @@ describe("WelcomeScreen landing experience", () => {
   it("shows the kinetic flight path and tour-style hero preview on the landing page", () => {
     render(<WelcomeScreen />);
 
+    expect(screen.getByTestId("kite-guide-shell")).toHaveClass(
+      "kite-cursor-guide--floating",
+    );
     expect(
       screen.getByRole("button", { name: /Cycle Kite guide tip/i }),
-    ).toHaveClass("kite-cursor-guide--floating");
+    ).toBeInTheDocument();
     expect(screen.getByText("Drop a clip.")).toBeInTheDocument();
     expect(
       screen.getByRole("region", { name: "Kite content flight path" }),

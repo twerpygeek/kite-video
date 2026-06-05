@@ -17,4 +17,14 @@ describe("KiteCursorGuide", () => {
 
     expect(screen.getByText("Shape the timeline.")).toBeInTheDocument();
   });
+
+  it("can be hidden when it gets in the way", () => {
+    render(<KiteCursorGuide />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Hide Kite guide/i }));
+
+    expect(
+      screen.queryByRole("button", { name: /Cycle Kite guide tip/i }),
+    ).not.toBeInTheDocument();
+  });
 });
